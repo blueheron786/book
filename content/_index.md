@@ -67,3 +67,12 @@ We are not afraid to remove results for sites that go against our values. For ex
 
 Blacklisting of a site should be by consensus of the Mwmbl community.
 
+
+### Adult Content
+
+We do not intend to intentionally surface any adult materials.
+
+That said, you may still come across some adult content on Mwmbl, particularly
+if you search extensively. We’re continually working to identify and remove it,
+but our filtering and blacklist measures aren’t perfect. This is an ongoing effort,
+and we’ll keep improving them as we find new instances.
