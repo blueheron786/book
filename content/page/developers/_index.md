@@ -29,7 +29,7 @@ Mwmbl uses [uv](https://docs.astral.sh/uv/) to manage its Python environment and
 From the root of the repository, run:
 
 ```sh
-uv sync
+make install
 ```
 
 This creates `.venv` and installs the project's dependencies.
@@ -66,11 +66,7 @@ If PostgreSQL is running in Docker while Mwmbl is running directly on your host,
 
 Mwmbl uses Redis for caching and background-task coordination.
 
-Make sure Redis is available at:
-
-```text
-127.0.0.1:6379
-```
+Make sure Redis is available at `127.0.0.1:6379`
 
 For example, with Docker:
 
@@ -112,7 +108,6 @@ Then:
 cd front-end
 npm install
 npm run build
-cd ..
 ```
 
 ### 8. Run the tests
@@ -128,27 +123,7 @@ Django/pytest will create the test database automatically.
 For a quicker development loop, run an individual test file:
 
 ```sh
-pytest test/test_voting_api.py -x -vv
-```
-
-Or a single test:
-
-```sh
-pytest test/test_voting_api.py::test_vote_on_search_result_success -vv
-```
-
-On Linux, Mwmbl uses the CPU-only XGBoost package. The distribution is named `xgboost-cpu`, but the Python module is imported as `xgboost`.
-
-If `import xgboost` fails even though `xgboost-cpu` is installed, reinstall the environment:
-
-```sh
-uv sync --reinstall
-```
-
-You can verify the installation with:
-
-```sh
-uv run python -c "import xgboost; print(xgboost.__version__)"
+make test-file FILE=test/test_voting_api.py
 ```
 
 ### 9. Run Mwmbl
@@ -159,17 +134,10 @@ Start the development server with:
 make run
 ```
 
-Then visit:
+To run the background task processor in a second terminal, use `make run-background`.
 
-```text
-http://localhost:8000/
-```
+Then visit `http://localhost:8000/`. For example: `http://localhost:8000/search?s=Newton`
 
-For example:
-
-```text
-http://localhost:8000/search?s=Newton
-```
 
 ## Useful Make targets
 
